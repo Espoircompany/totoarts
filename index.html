@@ -35,6 +35,1177 @@
     --color-shadow: rgba(44,48,80,0.65);
   }
 }
+:root[data-theme='dark'] {
+  --color-bg: #181926;
+  --color-bg-secondary: #23243a;
+  --color-primary: #6c8cff;
+  --color-secondary: #ff7eb6;
+  --color-accent: #28e0e0;
+  --color-text: #f6f7fb;
+  --color-text-secondary: #b7badb;
+  --color-card: #222338;
+  --color-border: #2b2c41;
+  --color-shadow: rgba(44,48,80,0.65);
+}
+
+/* RESET */
+*, *::before, *::after { box-sizing: border-box; }
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  margin: 0; padding: 0;
+  min-height: 100vh;
+  transition: var(--transition);
+}
+img { max-width: 100%; display: block; }
+a { color: var(--color-primary); text-decoration: none; transition: color 0.2s; }
+a:hover { color: var(--color-secondary); }
+
+header {
+  width: 100%;
+  background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+  box-shadow: 0 6px 32px var(--color-shadow);
+  padding: 34px 0 24px 0;
+  text-align: center;
+  margin-bottom: 0;
+  border-bottom-left-radius: 42px;
+  border-bottom-right-radius: 42px;
+  position: relative;
+}
+
+/* H1 Animation */
+h1 {
+  font-size: 3.1rem;
+  font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+  font-weight: 800;
+  background: linear-gradient(90deg, var(--color-accent) 15%, var(--color-primary) 60%, var(--color-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 1.5px;
+  margin: 0 auto 1.8rem auto;
+  opacity: 0;
+  transform: translateY(-60px) scale(0.95);
+  animation: h1Appear 1.2s cubic-bezier(.67,.16,.39,1.08) 0.4s forwards;
+  text-shadow: 0 2px 18px var(--color-shadow);
+  line-height: 1.1;
+}
+@keyframes h1Appear {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+nav {
+  margin-top: 18px;
+}
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 32px;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+}
+nav ul li a {
+  color: var(--color-bg);
+  font-weight: 600;
+  font-size: 1.2em;
+  padding: 7px 15px;
+  border-radius: 6px;
+  transition: background 0.2s, color 0.2s;
+}
+nav ul li a:hover {
+  background: var(--color-accent);
+  color: var(--color-text);
+}
+
+main {
+  margin: 0 auto;
+  padding: 38px 4vw 48px 4vw;
+  max-width: 900px;
+  background: var(--color-bg-secondary);
+  border-radius: 28px;
+  box-shadow: 0 8px 32px var(--color-shadow);
+  margin-top: -44px;
+  position: relative;
+  z-index: 2;
+}
+
+section {
+  margin-bottom: 48px;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+section:last-child { border-bottom: none; }
+
+h2 {
+  font-size: 2rem;
+  font-family: 'Montserrat', Arial, sans-serif;
+  color: var(--color-primary);
+  font-weight: 700;
+  margin-bottom: 16px;
+  letter-spacing: 1.1px;
+  background: linear-gradient(90deg, var(--color-secondary) 0%, var(--color-primary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+
+p {
+  color: var(--color-text-secondary);
+  font-size: 1.15em;
+  line-height: 1.7;
+  margin-bottom: 1.1em;
+}
+
+.card {
+  background: var(--color-card);
+  border-radius: 16px;
+  box-shadow: 0 4px 16px var(--color-shadow);
+  padding: 28px 24px;
+  margin-bottom: 24px;
+  border-left: 6px solid var(--color-accent);
+  transition: box-shadow 0.3s;
+}
+.card:hover {
+  box-shadow: 0 8px 32px var(--color-shadow);
+  border-left-color: var(--color-primary);
+}
+
+.btn {
+  display: inline-block;
+  font-size: 1.05em;
+  font-weight: 700;
+  background: linear-gradient(90deg, var(--color-primary) 60%, var(--color-secondary) 100%);
+  color: var(--color-bg);
+  padding: 12px 34px;
+  border: none;
+  border-radius: 50px;
+  box-shadow: 0 2px 18px var(--color-shadow);
+  margin-top: 18px;
+  cursor: pointer;
+  transition: background 0.23s, color 0.23s, transform 0.15s;
+  text-shadow: 0 2px 10px var(--color-shadow);
+}
+.btn:hover, .btn:focus {
+  background: linear-gradient(90deg, var(--color-accent) 20%, var(--color-secondary) 90%);
+  color: var(--color-text);
+  transform: translateY(-2px) scale(1.03);
+}
+
+footer {
+  text-align: center;
+  padding: 32px 0 18px;
+  color: var(--color-text-secondary);
+  background: none;
+  font-size: 1em;
+  letter-spacing: 1.1px;
+  margin-top: 40px;
+}
+
+.switch-mode-btn {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  background: var(--color-card);
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
+  border-radius: 50%;
+  width: 55px;
+  height: 55px;
+  font-size: 1.7em;
+  box-shadow: 0 4px 16px var(--color-shadow);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.18s, color 0.18s, border 0.18s;
+  z-index: 999;
+}
+.switch-mode-btn:hover {
+  background: var(--color-primary);
+  color: var(--color-bg);
+  border-color: var(--color-accent);
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.2rem; }
+  main { padding: 16px 2vw; }
+  header { padding: 18px 0 12px 0; }
+  nav ul { gap: 10px; }
+  .card { padding: 16px 10px; }
+  section { padding: 10px 0; }
+  .switch-mode-btn { right: 8px; bottom: 8px; width: 42px; height: 42px; font-size: 1.1em; }
+}
+
+/* Header */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 1.5rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--bg-section);
+    box-shadow: 0 2px 20px rgba(0,0,0,0.25);
+    transition: var(--transition);
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.logo span {
+    color: var(--accent);
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 0 10%;
+    position: relative;
+    background: linear-gradient(135deg, var(--bg-main) 0%, var(--bg-section) 100%);
+    color: var(--text-main);
+    transition: var(--transition);
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+}
+
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://images.unsplash.com/photo-1605000797499-95a51c5269ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80') center/cover no-repeat;
+    z-index: -1;
+    opacity: 0.1;
+}
+
+.hero-content {
+    max-width: 700px;
+}
+
+.hero-content h1 {
+    margin-top: 2.5rem;
+    margin-bottom: 1.5rem;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    color: var(--accent);
+    letter-spacing: 0.5px;
+}
+
+.hero h1 span {
+    color: var(--primary);
+    position: relative;
+}
+
+.hero h1 span:after {
+    content: '';
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    width: 100%;
+    height: 12px;
+    background-color: rgba(230, 57, 70, 0.3);
+    z-index: -1;
+    animation: highlight 1s 0.5s forwards;
+}
+
+.hero p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    color: var(--text-secondary);
+}
+
+.tagline {
+  display: inline-block;
+  padding: 0.7rem 2.2rem;
+  margin-bottom: 2.5rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  border-radius: 35px;
+  background: linear-gradient(90deg, #ff5eae, #28e0e0, #6c8cff, #ff7eb6, #ff5eae);
+  background-size: 300% 300%;
+  color: #fff;
+  text-shadow:
+    0 0 6px #ff5eae,
+    0 0 12px #28e0e0,
+    0 0 18px #6c8cff;
+  box-shadow:
+    0 2px 18px #ff5eae44,
+    0 0px 38px #28e0e044;
+  animation: taglineGradient 3s ease infinite, taglineAppear 1.2s cubic-bezier(.67,.16,.39,1.08) 0.1s both, floatY 4s ease-in-out infinite;
+  position: relative;
+  z-index: 2;
+  border: 2px solid #fff5;
+}
+
+@keyframes taglineGradient {
+  0% { background-position: 0% 50%;}
+  50% { background-position: 100% 50%;}
+  100% { background-position: 0% 50%;}
+}
+@keyframes taglineAppear {
+  0% { opacity: 0; transform: scale(0.85) translateY(-30px);}
+  100% { opacity: 1; transform: scale(1) translateY(0);}
+}
+@keyframes floatY {
+  0% { transform: translateY(0);}
+  50% { transform: translateY(-10px);}
+  100% { transform: translateY(0);}
+}
+
+.btn-outline {
+    color: var(--primary);
+    border: 2px solid var(--primary);
+    margin-left: 1rem;
+}
+
+.btn-outline:hover {
+    background-color: var(--primary);
+    color: var(--accent);
+}
+
+/* About Section */
+.about {
+    padding: 8rem 10%;
+    position: relative;
+    background-color: var(--bg-section);
+    color: var(--text-main);
+    transition: var(--transition);
+}
+
+.about-container {
+    display: flex;
+    gap: 5rem;
+    align-items: center;
+}
+
+.about-img {
+    flex: 1;
+    position: relative;
+    min-height: 500px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 20px 20px 0 var(--secondary);
+}
+
+.about-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition);
+}
+
+.about-img:hover img {
+    transform: scale(1.05);
+}
+
+.about-content {
+    flex: 1;
+}
+
+.section-title {
+    font-size: clamp(2rem, 5vw, 2.5rem);
+    margin-bottom: 2rem;
+    color: var(--accent);
+    position: relative;
+    display: inline-block;
+    transition: color 0.4s;
+}
+
+.section-title:after {
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    width: 60%;
+    height: 8px;
+    background-color: var(--primary);
+    z-index: -1;
+}
+
+.section-title:hover {
+    color: var(--primary);
+    letter-spacing: 2px;
+    transition: color 0.4s, letter-spacing 0.4s;
+}
+
+.about-content p {
+    margin-bottom: 1.5rem;
+}
+
+.formation-badge {
+    display: inline-block;
+    background-color: var(--accent);
+    color: var(--secondary);
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-top: 1rem;
+    border: 1px dashed var(--secondary);
+}
+
+/* Portfolio Section */
+.portfolio {
+    padding: 8rem 10%;
+    background-color: var(--bg-main);
+    transition: var(--transition);
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.portfolio-item {
+    position: relative;
+    aspect-ratio: 1/1;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.4s, transform 0.4s;
+}
+
+.portfolio-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition);
+}
+
+.portfolio-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(24,26,32,0.95) 0%, rgba(24,26,32,0.1) 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 2rem;
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.portfolio-item:hover .portfolio-overlay {
+    opacity: 1;
+}
+
+.portfolio-item:hover .portfolio-img {
+    transform: scale(1.1);
+}
+
+.portfolio-overlay h3 {
+    color: var(--accent);
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    transform: translateY(20px);
+    transition: var(--transition);
+}
+
+.portfolio-overlay p {
+    color: rgba(255, 255, 255, 0.8);
+    transform: translateY(20px);
+    transition: var(--transition);
+}
+
+.portfolio-item:hover .portfolio-overlay h3,
+.portfolio-item:hover .portfolio-overlay p {
+    transform: translateY(0);
+}
+
+/* Services Section */
+.services {
+    padding: 8rem 10%;
+    background-color: var(--bg-section);
+    color: var(--text-main);
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.service-card {
+    background-color: var(--bg-card);
+    color: var(--text-main);
+    border-top: 4px solid var(--primary);
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    transition: var(--transition);
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.service-icon {
+    font-size: 2.5rem;
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+}
+
+.service-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--secondary);
+}
+
+/* Contact Section */
+.contact {
+    padding: 8rem 10%;
+    background-color: var(--bg-section);
+    color: var(--text-main);
+}
+
+.contact .section-title {
+    color: var(--accent);
+}
+
+.contact .section-title:after {
+    background-color: var(--primary);
+}
+
+.contact-container {
+    display: flex;
+    gap: 5rem;
+    margin-top: 3rem;
+}
+
+.contact-info {
+    flex: 1;
+}
+
+.contact-info h3 {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.info-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+}
+
+.info-icon {
+    font-size: 1.2rem;
+    color: var(--primary);
+    margin-right: 1rem;
+    margin-top: 5px;
+}
+
+.contact-form {
+    flex: 1;
+    background-color: var(--bg-card);
+    color: var(--text-main);
+    padding: 3rem;
+    border-radius: 10px;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--accent);
+    font-weight: 600;
+}
+
+.form-control {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid #333;
+    border-radius: 5px;
+    font-family: 'Archivo', sans-serif;
+    background: var(--bg-section);
+    color: var(--text-main);
+}
+
+.form-control:focus {
+    border-color: var(--primary);
+}
+
+textarea.form-control {
+    min-height: 150px;
+}
+
+/* Footer */
+
+.footer-logo {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+.footer-logo span {
+    color: var(--accent);
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.social-links a {
+    color: var(--accent);
+    font-size: 1.5rem;
+    transition: var(--transition);
+}
+
+.social-links a:hover {
+    color: var(--primary);
+}
+
+.copyright {
+    opacity: 0.7;
+    font-size: 0.9rem;
+}
+
+/* Animations */
+@keyframes highlight {
+    from { transform: scaleX(0);}
+    to { transform: scaleX(1);}
+}
+
+@keyframes floatY {
+    0% { transform: translateY(0);}
+    50% { transform: translateY(-18px);}
+    100% { transform: translateY(0);}
+}
+@keyframes floatX {
+    0% { transform: translateX(0);}
+    50% { transform: translateX(18px);}
+    100% { transform: translateX(0);}
+}
+
+/* Formes SVG animées en fond */
+.bg-shape {
+    position: fixed;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.12;
+    animation: floatY 8s ease-in-out infinite alternate;
+}
+.bg-shape1 { top: 10%; left: 60%; width: 220px; height: 220px; }
+.bg-shape2 { top: 70%; left: 10%; width: 140px; height: 140px; animation-delay: 2s;}
+.bg-shape3 { top: 80%; left: 70%; width: 90px; height: 90px; animation-delay: 4s;}</style>
+</head>
+<body>
+  <button class="switch-mode-btn" id="switchModeBtn" title="Changer le mode">
+  🌙
+</button>
+
+  <div class="bg-shape bg-shape1">
+    <svg width="100%" height="100%"><circle cx="50%" cy="50%" r="48%" fill="#4f8cff"/></svg>
+  </div>
+  <div class="bg-shape bg-shape2">
+    <svg width="100%" height="100%"><rect width="100%" height="100%" rx="40" fill="#ff5eae"/></svg>
+  </div>
+  <div class="bg-shape bg-shape3">
+    <svg width="100%" height="100%"><polygon points="45,0 90,90 0,90" fill="#1D3557"/></svg>
+  </div>
+
+    <!-- Header -->
+    <header>
+        <a href="#" class="logo">TOTO <span>Arts</span></a>
+        <nav>
+            <ul>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#about">À Propos</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <span class="tagline"><br><br>Sérigraphie & Design Créatif</span>
+            <h1>Je suis Serge, passionné par l'art de l'impression</h1>
+            <p>À travers EGRES WORK, je combine techniques traditionnelles de sérigraphie et design contemporain pour créer des pièces uniques au Bénin. Actuellement en formation pour perfectionner mon art.</p>
+            <div class="hero-btns">
+                <a href="#portfolio" class="btn">Voir mon travail <i class="fas fa-arrow-right"></i></a>
+                <a href="#contact" class="btn btn-outline">Discutons projet <i class="fas fa-comment-dots"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="about-container">
+            <div class="about-img">
+                <img src="images/photo_2025-06-26_04-16-18.jpg" alt="Serge de EGRES WORK">
+            </div>
+            <div class="about-content">
+                <h2 class="section-title">Mon Parcours Créatif</h2>
+                <p>Je m'appelle Serge HOUEDIKIN, fondateur de TOTO Arts au Bénin. Ma passion pour la sérigraphie et le design graphique est née d'une fascination pour le processus artisanal de création visuelle.</p>
+                <p>Bien que toujours en formation, j'ai déjà eu l'opportunité de travailler sur divers projets qui m'ont permis de développer mon style - un mélange d'inspirations africaines contemporaines et de techniques d'impression traditionnelles.</p>
+                <p>EGRES WORK représente mon engagement à apprendre, créer et évoluer dans le domaine de la sérigraphie et du design. Chaque projet est une nouvelle opportunité d'expérimentation et de perfectionnement.</p>
+                <span class="formation-badge"><i class="fas fa-graduation-cap"></i> En formation continue</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio" id="portfolio">
+        <h2 class="section-title">Mes Réalisations</h2>
+        <p>Une sélection de mes projets récents, réalisés pendant ma formation et collaborations</p>
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <img src="images/photo_1_2025-06-27_22-18-41.jpg" alt="T-shirts sérigraphiés" class="portfolio-img">
+                <div class="portfolio-overlay">
+                    <h3>Collection Textile</h3>
+                    <p>Sérigraphie sur coton local</p>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="images/photo_12_2025-06-27_22-18-41.jpg" alt="Affiche culturelle" class="portfolio-img">
+                <div class="portfolio-overlay">
+                    <h3>Affiche Événement</h3>
+                    <p>Festival culturel à Cotonou</p>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="images/photo_10_2025-06-27_22-18-41.jpg" alt="Packaging artisanal" class="portfolio-img">
+                <div class="portfolio-overlay">
+                    <h3>Packaging Artisanal</h3>
+                    <p>Pour marque locale</p>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="images/photo_11_2025-06-27_22-18-41.jpg" alt="Illustrations" class="portfolio-img">
+                <div class="portfolio-overlay">
+                    <h3>Série d'Illustrations</h3>
+                    <p>Techniques mixtes</p>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="images/photo_13_2025-06-27_22-18-41.jpg" alt="Accessoires" class="portfolio-img">
+                <div class="portfolio-overlay">
+                    <h3>Accessoires</h3>
+                    <p>Tote bags et sacs</p>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="images/photo_14_2025-06-27_22-18-41.jpg" alt="Affiche typographique" class="portfolio-img">
+                <div class="portfolio-overlay">
+                    <h3>Affiche Typographique</h3>
+                    <p>Expérimentation de polices</p>
+                </div>
+            </div>
+             <div class="portfolio-item">
+                <img src="images/photo_15_2025-06-27_22-18-41.jpg" alt="Packaging artisanal" class="portfolio-img">
+                <div class="portfolio-overlay">
+                    <h3>Packaging Artisanal</h3>
+                    <p>Pour marque locale</p>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="images/photo_16_2025-06-27_22-18-41.jpg" alt="Packaging artisanal" class="portfolio-img">
+                <div class="portfolio-overlay">
+                    <h3>Packaging Artisanal</h3>
+                    <p>Pour marque locale</p>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="images/photo_17_2025-06-27_22-18-41.jpg" alt="Packaging artisanal" class="portfolio-img">
+                <div class="portfolio-overlay">
+                    <h3>Packaging Artisanal</h3>
+                    <p>Pour marque locale</p>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="images/photo_18_2025-06-27_22-18-41.jpg" alt="Packaging artisanal" class="portfolio-img">
+                <div class="portfolio-overlay">
+                    <h3>Packaging Artisanal</h3>
+                    <p>Pour marque locale</p>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="images/photo_19_2025-06-27_22-18-41.jpg" alt="Packaging artisanal" class="portfolio-img">
+                <div class="portfolio-overlay">
+                    <h3>Packaging Artisanal</h3>
+                    <p>Pour marque locale</p>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="images/photo_20_2025-06-27_22-18-41.jpg" alt="Packaging artisanal" class="portfolio-img">
+                <div class="portfolio-overlay">
+                    <h3>Packaging Artisanal</h3>
+                    <p>Pour marque locale</p>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="images/photo_21_2025-06-27_22-18-41.jpg" alt="Packaging artisanal" class="portfolio-img">
+                <div class="portfolio-overlay">
+                    <h3>Packaging Artisanal</h3>
+                    <p>Pour marque locale</p>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="images/photo_22_2025-06-27_22-18-41.jpg" alt="Packaging artisanal" class="portfolio-img">
+                <div class="portfolio-overlay">
+                    <h3>Packaging Artisanal</h3>
+                    <p>Pour marque locale</p>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="images/photo_23_2025-06-27_22-18-41.jpg" alt="Packaging artisanal" class="portfolio-img">
+                <div class="portfolio-overlay">
+                    <h3>Packaging Artisanal</h3>
+                    <p>Pour marque locale</p>
+                </div>
+            </div>
+        </div>
+        <div class="portfolio-item">
+                <img src="images/photo_24_2025-06-27_22-18-41.jpg" alt="Packaging artisanal" class="portfolio-img">
+                <div class="portfolio-overlay">
+                    <h3>Packaging Artisanal</h3>
+                    <p>Pour marque locale</p>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="images/photo_25_2025-06-27_22-18-41.jpg" alt="Packaging artisanal" class="portfolio-img">
+                <div class="portfolio-overlay">
+                    <h3>Packaging Artisanal</h3>
+                    <p>Pour marque locale</p>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="images/photo_26_2025-06-27_22-18-41.jpg" alt="Packaging artisanal" class="portfolio-img">
+                <div class="portfolio-overlay">
+                    <h3>Packaging Artisanal</h3>
+                    <p>Pour marque locale</p>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="images/photo_27_2025-06-27_22-18-41.jpg" alt="Packaging artisanal" class="portfolio-img">
+                <div class="portfolio-overlay">
+                    <h3>Packaging Artisanal</h3>
+                    <p>Pour marque locale</p>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="images/photo_28_2025-06-27_22-18-41.jpg" alt="Packaging artisanal" class="portfolio-img">
+                <div class="portfolio-overlay">
+                    <h3>Packaging Artisanal</h3>
+                    <p>Pour marque locale</p>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="images/photo_2_2025-06-27_22-18-41.jpg" alt="Packaging artisanal" class="portfolio-img">
+                <div class="portfolio-overlay">
+                    <h3>Packaging Artisanal</h3>
+                    <p>Pour marque locale</p>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="images/photo_3_2025-06-27_22-18-41.jpg" alt="Packaging artisanal" class="portfolio-img">
+                <div class="portfolio-overlay">
+                    <h3>Packaging Artisanal</h3>
+                    <p>Pour marque locale</p>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="images/photo_4_2025-06-27_22-18-41.jpg" alt="Packaging artisanal" class="portfolio-img">
+                <div class="portfolio-overlay">
+                    <h3>Packaging Artisanal</h3>
+                    <p>Pour marque locale</p>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="images/photo_5_2025-06-27_22-18-41.jpg" alt="Packaging artisanal" class="portfolio-img">
+                <div class="portfolio-overlay">
+                    <h3>Packaging Artisanal</h3>
+                    <p>Pour marque locale</p>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="images/photo_6_2025-06-27_22-18-41.jpg" alt="Packaging artisanal" class="portfolio-img">
+                <div class="portfolio-overlay">
+                    <h3>Packaging Artisanal</h3>
+                    <p>Pour marque locale</p>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="images/photo_7_2025-06-27_22-18-41.jpg" alt="Packaging artisanal" class="portfolio-img">
+                <div class="portfolio-overlay">
+                    <h3>Packaging Artisanal</h3>
+                    <p>Pour marque locale</p>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="images/photo_8_2025-06-27_22-18-41.jpg" alt="Packaging artisanal" class="portfolio-img">
+                <div class="portfolio-overlay">
+                    <h3>Packaging Artisanal</h3>
+                    <p>Pour marque locale</p>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="images/photo_9_2025-06-27_22-18-41.jpg" alt="Packaging artisanal" class="portfolio-img">
+                <div class="portfolio-overlay">
+                    <h3>Packaging Artisanal</h3>
+                    <p>Pour marque locale</p>
+                </div>
+            </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <h2 class="section-title">Mes Services</h2>
+        <p>Ce que je propose actuellement dans le cadre de ma formation et développement</p>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-tshirt"></i>
+                </div>
+                <h3>Sérigraphie Textile</h3>
+                <p>Impression sur t-shirts, tote bags et autres supports textiles avec encres de qualité.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-palette"></i>
+                </div>
+                <h3>Design Graphique</h3>
+                <p>Création d'identités visuelles, logos et illustrations adaptées à l'impression.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-tools"></i>
+                </div>
+                <h3>Ateliers Découverte</h3>
+                <p>Initiation à la sérigraphie pour petits groupes (sur demande).</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-box-open"></i>
+                </div>
+                <h3>Packaging Artisanal</h3>
+                <p>Conception et impression d'emballages personnalisés pour artisans locaux.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <h2 class="section-title">Contactez TOTO Arts</h2>
+        <p>Disponible pour des collaborations et projets au Bénin</p>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Coordonnées</h3>
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div>
+                        <h4>Localisation</h4>
+                        <p>Calavi, Bénin</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <div>
+                        <h4>Téléphone</h4>
+                        <p>+229 01 54 17 12 92</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div>
+                        <h4>Email</h4>
+                        <p>Sergehouedikin@icloud.com</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div>
+                        <h4>Disponibilité</h4>
+                        <p>Lun-dim: 24H/24<br>Sur rendez-vous le week-end</p>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-form">
+                <form>
+                    <div class="form-group">
+                        <label for="name">Nom complet</label>
+                        <input type="text" id="name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Sujet</label>
+                        <input type="text" id="subject" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Détails du projet</label>
+                        <textarea id="message" class="form-control" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Envoyer message <i class="fas fa-paper-plane"></i></button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-logo">EGRES <span>WORK</span></div>
+        <p>Artisanat d'impression et design créatif au Bénin</p>
+        <div class="social-links">
+            <a href="https://wa.me/22954171292"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.facebook.com/ser.ge.3154?mibextid=wwXIfr&mibextid=wwXIfr"><i class="fab fa-facebook-f"></i></a>
+        </div>
+        <p class="copyright">© 2025 TOTO arts par Serge.</p>
+        <p class="copyright">Développé par Espoir (+229 01 58 44 37 83)</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Animation on scroll
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.about-img, .about-content, .portfolio-item, .service-card, .contact-info, .contact-form');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.2;
+                
+                if (elementPosition < screenPosition) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+
+        // Set initial state
+        document.querySelectorAll('.about-img, .about-content, .portfolio-item, .service-card, .contact-info, .contact-form').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+        });
+
+        // Trigger animations
+        window.addEventListener('load', animateOnScroll);
+        window.addEventListener('scroll', animateOnScroll);
+
+        // Ajoute dans le <script> après le DOMContentLoaded
+        const heroTitle = document.querySelector('.hero-content h1');
+        if(heroTitle) {
+          const text = heroTitle.textContent;
+          heroTitle.innerHTML = '';
+          text.split('').forEach((char, i) => {
+            const span = document.createElement('span');
+            span.textContent = char === ' ' ? '\u00A0' : char; // espace insécable
+            span.style.opacity = '0';
+            span.style.display = 'inline-block';
+            span.style.transition = `opacity 0.2s ${i*0.04}s, transform 0.3s ${i*0.04}s`;
+            heroTitle.appendChild(span);
+          });
+          setTimeout(() => {
+            heroTitle.querySelectorAll('span').forEach(span => {
+              span.style.opacity = '1';
+              span.style.transform = 'translateY(0)';
+            });
+          }, 400);
+        }
+
+const btn = const btn = document.getElementById('switchModeBtn');
+btn.addEventListener('click', function() {
+  const html = document.documentElement;
+  if (html.getAttribute('data-theme') === 'dark') {
+    html.removeAttribute('data-theme');
+    btn.textContent = '🌙';
+  } else {
+    html.setAttribute('data-theme', 'dark');
+    btn.textContent = '☀️';
+  }
+});
+    </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOTO Arts | Sérigraphie & Design Créatif</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+    <style>
+:root {
+  /* Light mode */
+  --color-bg: #f6f7fb;
+  --color-bg-secondary: #ffffff;
+  --color-primary: #5a63ea;
+  --color-secondary: #ee5ec9;
+  --color-accent: #28e0e0;
+  --color-text: #23243a;
+  --color-text-secondary: #4e4e70;
+  --color-card: #ffffff;
+  --color-border: #e0e0e0;
+  --color-shadow: rgba(90,99,234,0.07);
+  --transition: all 0.5s cubic-bezier(.77,0,.18,1);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #181926;
+    --color-bg-secondary: #23243a;
+    --color-primary: #6c8cff;
+    --color-secondary: #ff7eb6;
+    --color-accent: #28e0e0;
+    --color-text: #f6f7fb;
+    --color-text-secondary: #b7badb;
+    --color-card: #222338;
+    --color-border: #2b2c41;
+    --color-shadow: rgba(44,48,80,0.65);
+  }
+}
 :root[data-theme='dark'] .tagline {
   background: linear-gradient(90deg, #0fffc1, #6c8cff, #181926, #ff7eb6, #0fffc1);
   color: #181926;
@@ -752,7 +1923,7 @@ textarea.form-control {
     <section class="hero">
         <div class="hero-bg"></div>
         <div class="hero-content">
-            <span class="tagline">Sérigraphie & Design Créatif</span>
+            <span class="tagline"><br><br><br><br><br><br>Sérigraphie & Design Créatif</span>
             <h1>Je suis Serge, passionné par l'art de l'impression</h1>
             <p>À travers EGRES WORK, je combine techniques traditionnelles de sérigraphie et design contemporain pour créer des pièces uniques au Bénin. Actuellement en formation pour perfectionner mon art.</p>
             <div class="hero-btns">
