@@ -35,19 +35,21 @@
     --color-shadow: rgba(44,48,80,0.65);
   }
 }
-:root[data-theme='dark'] {
-  --color-bg: #181926;
-  --color-bg-secondary: #23243a;
-  --color-primary: #6c8cff;
-  --color-secondary: #ff7eb6;
-  --color-accent: #28e0e0;
-  --color-text: #f6f7fb;
-  --color-text-secondary: #b7badb;
-  --color-card: #222338;
-  --color-border: #2b2c41;
-  --color-shadow: rgba(44,48,80,0.65);
+:root[data-theme='dark'] .tagline {
+  background: linear-gradient(90deg, #0fffc1, #6c8cff, #181926, #ff7eb6, #0fffc1);
+  color: #181926;
+  text-shadow:
+    0 0 8px #0fffc1,
+    0 0 16px #6c8cff,
+    0 0 24px #ff7eb6;
+  border: 2px solid #6c8cff88;
+  box-shadow:
+    0 2px 20px #6c8cff44,
+    0 0px 38px #0fffc144;
 }
-
+:root[data-theme='dark'] .tagline::after {
+  box-shadow: 0 0 48px 12px #0fffc188, 0 0 32px 6px #6c8cff88;
+}
 /* RESET */
 *, *::before, *::after { box-sizing: border-box; }
 body {
@@ -271,7 +273,6 @@ header {
     color: var(--accent);
 }
 
-
 /* Hero Section */
 .hero {
     height: 100vh;
@@ -333,13 +334,42 @@ header {
 }
 
 .tagline {
-    display: inline-block;
-    background-color: var(--secondary);
-    color: var(--accent);
-    padding: 0.5rem 1rem;
-    margin-bottom: 1rem;
-    font-size: 0.9rem;
-    letter-spacing: 1px;
+  display: inline-block;
+  padding: 0.7rem 2.2rem;
+  margin-bottom: 2.5rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  border-radius: 35px;
+  background: linear-gradient(90deg, #ff5eae, #28e0e0, #6c8cff, #ff7eb6, #ff5eae);
+  background-size: 300% 300%;
+  color: #fff;
+  text-shadow:
+    0 0 6px #ff5eae,
+    0 0 12px #28e0e0,
+    0 0 18px #6c8cff;
+  box-shadow:
+    0 2px 18px #ff5eae44,
+    0 0px 38px #28e0e044;
+  animation: taglineGradient 3s ease infinite, taglineAppear 1.2s cubic-bezier(.67,.16,.39,1.08) 0.1s both, floatY 4s ease-in-out infinite;
+  position: relative;
+  z-index: 2;
+  border: 2px solid #fff5;
+}
+
+@keyframes taglineGradient {
+  0% { background-position: 0% 50%;}
+  50% { background-position: 100% 50%;}
+  100% { background-position: 0% 50%;}
+}
+@keyframes taglineAppear {
+  0% { opacity: 0; transform: scale(0.85) translateY(-30px);}
+  100% { opacity: 1; transform: scale(1) translateY(0);}
+}
+@keyframes floatY {
+  0% { transform: translateY(0);}
+  50% { transform: translateY(-10px);}
+  100% { transform: translateY(0);}
 }
 
 .btn-outline {
@@ -722,7 +752,7 @@ textarea.form-control {
     <section class="hero">
         <div class="hero-bg"></div>
         <div class="hero-content">
-            <span class="tagline">Sérigraphie & Design Créatif</span>
+            <span class="tagline"><br><br>Sérigraphie & Design Créatif</span>
             <h1>Je suis Serge, passionné par l'art de l'impression</h1>
             <p>À travers EGRES WORK, je combine techniques traditionnelles de sérigraphie et design contemporain pour créer des pièces uniques au Bénin. Actuellement en formation pour perfectionner mon art.</p>
             <div class="hero-btns">
@@ -1127,14 +1157,15 @@ textarea.form-control {
           }, 400);
         }
 
-const btn = document.getElementById('switchModeBtn');
-btn.addEventListener('click', () => {
-  if (document.documentElement.hasAttribute('data-theme')) {
-    document.documentElement.removeAttribute('data-theme');
-    btn.innerHTML = '🌙';
+const btn = const btn = document.getElementById('switchModeBtn');
+btn.addEventListener('click', function() {
+  const html = document.documentElement;
+  if (html.getAttribute('data-theme') === 'dark') {
+    html.removeAttribute('data-theme');
+    btn.textContent = '🌙';
   } else {
-    document.documentElement.setAttribute('data-theme', 'dark');
-    btn.innerHTML = '☀️';
+    html.setAttribute('data-theme', 'dark');
+    btn.textContent = '☀️';
   }
 });
     </script>
