@@ -2,10 +2,10 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TOTO Arts | Sérigraphie & Design Créatif</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Screen LE SERIGRAPHE | Sérigraphie & Design Créatif</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700&family=DM+Serif+Display&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <style>
 :root {
   /* Light mode */
@@ -60,7 +60,7 @@ body {
   min-height: 100vh;
   transition: var(--transition);
 }
-img { max-width: 100%; display: block; height:center; }
+img { max-width: 100%; display: block; }
 a { color: var(--color-primary); text-decoration: none; transition: color 0.2s; }
 a:hover { color: var(--color-secondary); }
 
@@ -253,7 +253,7 @@ header {
     top: 0;
     width: 100%;
     z-index: 1000;
-    padding: 1.5rem 5%;
+    padding: 1rem 5%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -262,15 +262,32 @@ header {
     transition: var(--transition);
 }
 
-.logo {
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: var(--primary);
-    text-decoration: none;
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
 }
 
-.logo span {
-    color: var(--accent);
+.logo-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--color-accent);
+}
+
+.logo-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--color-bg);
+    text-decoration: none;
+    letter-spacing: 1px;
+}
+
+.logo-text span {
+    color: var(--color-accent);
+    font-style: italic;
 }
 
 /* Hero Section */
@@ -473,7 +490,7 @@ header {
 
 .portfolio-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 2rem;
     margin-top: 3rem;
 }
@@ -657,6 +674,11 @@ textarea.form-control {
 }
 
 /* Footer */
+.footer {
+    padding: 4rem 10%;
+    background-color: var(--bg-section);
+    text-align: center;
+}
 
 .footer-logo {
     font-size: 2rem;
@@ -691,6 +713,46 @@ textarea.form-control {
     font-size: 0.9rem;
 }
 
+/* Gallery Grid Modifications */
+.gallery-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.visible-gallery {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin-bottom: 2rem;
+    width: 100%;
+}
+
+.hidden-gallery {
+    display: none;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    width: 100%;
+    margin-top: 2rem;
+}
+
+.show-more-btn {
+    background: var(--color-primary);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    margin-top: 2rem;
+}
+
+.show-more-btn:hover {
+    background: var(--color-secondary);
+    transform: translateY(-2px);
+}
+
 /* Animations */
 @keyframes highlight {
     from { transform: scaleX(0);}
@@ -718,7 +780,8 @@ textarea.form-control {
 }
 .bg-shape1 { top: 10%; left: 60%; width: 220px; height: 220px; }
 .bg-shape2 { top: 70%; left: 10%; width: 140px; height: 140px; animation-delay: 2s;}
-.bg-shape3 { top: 80%; left: 70%; width: 90px; height: 90px; animation-delay: 4s;}</style>
+.bg-shape3 { top: 80%; left: 70%; width: 90px; height: 90px; animation-delay: 4s;}
+</style>
 </head>
 <body>
   <button class="switch-mode-btn" id="switchModeBtn" title="Changer le mode">
@@ -737,7 +800,10 @@ textarea.form-control {
 
     <!-- Header -->
     <header>
-        <a href="#" class="logo">TOTO <span>Arts</span></a>
+        <div class="logo-container">
+            <img src="images/logo.jpg" alt="Logo Screen LE SERIGRAPHE" class="logo-img">
+            <a href="#" class="logo-text">Screen <span>LE SERIGRAPHE</span></a>
+        </div>
         <nav>
             <ul>
                 <li><a href="#portfolio">Portfolio</a></li>
@@ -752,7 +818,7 @@ textarea.form-control {
     <section class="hero">
         <div class="hero-bg"></div>
         <div class="hero-content">
-            <span class="tagline"><br><br><br><br><br><br>Sérigraphie & Design Créatif</span>
+            <span class="tagline"><br><br>Sérigraphie & Design Créatif</span>
             <h1>Je suis Serge, passionné par l'art de l'impression</h1>
             <p>À travers EGRES WORK, je combine techniques traditionnelles de sérigraphie et design contemporain pour créer des pièces uniques au Bénin. Actuellement en formation pour perfectionner mon art.</p>
             <div class="hero-btns">
@@ -766,13 +832,13 @@ textarea.form-control {
     <section class="about" id="about">
         <div class="about-container">
             <div class="about-img">
-                <img src="images/photo_2025-06-26_04-16-18.jpg" alt="Serge de EGRES WORK">
+                <img src="images/profil.jpg" alt="Serge de EGRES WORK">
             </div>
             <div class="about-content">
                 <h2 class="section-title">Mon Parcours Créatif</h2>
-                <p>Je m'appelle Serge HOUEDIKIN, fondateur de TOTO Arts au Bénin. Ma passion pour la sérigraphie et le design graphique est née d'une fascination pour le processus artisanal de création visuelle.</p>
+                <p>Je m'appelle Serge HOUEDIKIN, fondateur de Screen LE SERIGRAPHE au Bénin. Ma passion pour la sérigraphie et le design graphique est née d'une fascination pour le processus artisanal de création visuelle.</p>
                 <p>Bien que toujours en formation, j'ai déjà eu l'opportunité de travailler sur divers projets qui m'ont permis de développer mon style - un mélange d'inspirations africaines contemporaines et de techniques d'impression traditionnelles.</p>
-                <p>EGRES WORK représente mon engagement à apprendre, créer et évoluer dans le domaine de la sérigraphie et du design. Chaque projet est une nouvelle opportunité d'expérimentation et de perfectionnement.</p>
+                <p>Screen LE SERIGRAPHE représente mon engagement à apprendre, créer et évoluer dans le domaine de la sérigraphie et du design. Chaque projet est une nouvelle opportunité d'expérimentation et de perfectionnement.</p>
                 <span class="formation-badge"><i class="fas fa-graduation-cap"></i> En formation continue</span>
             </div>
         </div>
@@ -782,204 +848,212 @@ textarea.form-control {
     <section class="portfolio" id="portfolio">
         <h2 class="section-title">Mes Réalisations</h2>
         <p>Une sélection de mes projets récents, réalisés pendant ma formation et collaborations</p>
-        <div class="portfolio-grid">
-            <div class="portfolio-item">
-                <img src="images/photo_1_2025-06-27_22-18-41.jpg" alt="T-shirts sérigraphiés" class="portfolio-img">
-                <div class="portfolio-overlay">
-                    <h3>Collection Textile</h3>
-                    <p>Sérigraphie sur coton local</p>
+        
+        <div class="gallery-container">
+            <div class="visible-gallery">
+                <div class="portfolio-item">
+                    <img src="images/photo_1_2025-06-27_22-18-41.jpg" alt="T-shirts sérigraphiés" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3>Collection Textile</h3>
+                        <p>Sérigraphie sur coton local</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="images/photo_13_2025-06-27_22-18-41.jpg" alt="Affiche culturelle" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3>Affiche Événement</h3>
+                        <p>Festival culturel à Cotonou</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="images/photo_10_2025-06-27_22-18-41.jpg" alt="Packaging artisanal" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3>Packaging Artisanal</h3>
+                        <p>Pour marque locale</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="images/photo_11_2025-06-27_22-18-41.jpg" alt="Illustrations" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3>Série d'Illustrations</h3>
+                        <p>Techniques mixtes</p>
+                    </div>
                 </div>
             </div>
-            <div class="portfolio-item">
-                <img src="images/photo_12_2025-06-27_22-18-41.jpg" alt="Affiche culturelle" class="portfolio-img">
-                <div class="portfolio-overlay">
-                    <h3>Affiche Événement</h3>
-                    <p>Festival culturel à Cotonou</p>
+            
+            <button class="show-more-btn" id="showMoreBtn">Voir plus de réalisations</button>
+            
+            <div class="hidden-gallery" id="hiddenGallery">
+                <div class="portfolio-item">
+                    <img src="images/photo_12_2025-06-27_22-18-41.jpg" alt="Accessoires" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3>Accessoires</h3>
+                        <p>Tote bags et sacs</p>
+                    </div>
                 </div>
-            </div>
-            <div class="portfolio-item">
-                <img src="images/photo_10_2025-06-27_22-18-41.jpg" alt="Packaging artisanal" class="portfolio-img">
-                <div class="portfolio-overlay">
-                    <h3>Packaging Artisanal</h3>
-                    <p>Pour marque locale</p>
+                <div class="portfolio-item">
+                    <img src="images/photo_14_2025-06-27_22-18-41.jpg" alt="Affiche typographique" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3>Affiche Typographique</h3>
+                        <p>Expérimentation de polices</p>
+                    </div>
                 </div>
-            </div>
-            <div class="portfolio-item">
-                <img src="images/photo_11_2025-06-27_22-18-41.jpg" alt="Illustrations" class="portfolio-img">
-                <div class="portfolio-overlay">
-                    <h3>Série d'Illustrations</h3>
-                    <p>Techniques mixtes</p>
+                <div class="portfolio-item">
+                    <img src="images/photo_15_2025-06-27_22-18-41.jpg" alt="Packaging artisanal" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3>Packaging Artisanal</h3>
+                        <p>Pour marque locale</p>
+                    </div>
                 </div>
-            </div>
-            <div class="portfolio-item">
-                <img src="images/photo_13_2025-06-27_22-18-41.jpg" alt="Accessoires" class="portfolio-img">
-                <div class="portfolio-overlay">
-                    <h3>Accessoires</h3>
-                    <p>Tote bags et sacs</p>
+                <div class="portfolio-item">
+                    <img src="images/photo_16_2025-06-27_22-18-41.jpg" alt="Packaging artisanal" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3>Packaging Artisanal</h3>
+                        <p>Pour marque locale</p>
+                    </div>
                 </div>
-            </div>
-            <div class="portfolio-item">
-                <img src="images/photo_14_2025-06-27_22-18-41.jpg" alt="Affiche typographique" class="portfolio-img">
-                <div class="portfolio-overlay">
-                    <h3>Affiche Typographique</h3>
-                    <p>Expérimentation de polices</p>
+                <div class="portfolio-item">
+                    <img src="images/photo_17_2025-06-27_22-18-41.jpg" alt="Packaging artisanal" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3>Packaging Artisanal</h3>
+                        <p>Pour marque locale</p>
+                    </div>
                 </div>
-            </div>
-             <div class="portfolio-item">
-                <img src="images/photo_15_2025-06-27_22-18-41.jpg" alt="Packaging artisanal" class="portfolio-img">
-                <div class="portfolio-overlay">
-                    <h3>Packaging Artisanal</h3>
-                    <p>Pour marque locale</p>
+                <div class="portfolio-item">
+                    <img src="images/photo_18_2025-06-27_22-18-41.jpg" alt="Packaging artisanal" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3>Packaging Artisanal</h3>
+                        <p>Pour marque locale</p>
+                    </div>
                 </div>
-            </div>
-            <div class="portfolio-item">
-                <img src="images/photo_16_2025-06-27_22-18-41.jpg" alt="Packaging artisanal" class="portfolio-img">
-                <div class="portfolio-overlay">
-                    <h3>Packaging Artisanal</h3>
-                    <p>Pour marque locale</p>
+                <div class="portfolio-item">
+                    <img src="images/photo_19_2025-06-27_22-18-41.jpg" alt="Packaging artisanal" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3>Packaging Artisanal</h3>
+                        <p>Pour marque locale</p>
+                    </div>
                 </div>
-            </div>
-            <div class="portfolio-item">
-                <img src="images/photo_17_2025-06-27_22-18-41.jpg" alt="Packaging artisanal" class="portfolio-img">
-                <div class="portfolio-overlay">
-                    <h3>Packaging Artisanal</h3>
-                    <p>Pour marque locale</p>
+                <div class="portfolio-item">
+                    <img src="images/photo_20_2025-06-27_22-18-41.jpg" alt="Packaging artisanal" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3>Packaging Artisanal</h3>
+                        <p>Pour marque locale</p>
+                    </div>
                 </div>
-            </div>
-            <div class="portfolio-item">
-                <img src="images/photo_18_2025-06-27_22-18-41.jpg" alt="Packaging artisanal" class="portfolio-img">
-                <div class="portfolio-overlay">
-                    <h3>Packaging Artisanal</h3>
-                    <p>Pour marque locale</p>
+                <div class="portfolio-item">
+                    <img src="images/photo_21_2025-06-27_22-18-41.jpg" alt="Packaging artisanal" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3>Packaging Artisanal</h3>
+                        <p>Pour marque locale</p>
+                    </div>
                 </div>
-            </div>
-            <div class="portfolio-item">
-                <img src="images/photo_19_2025-06-27_22-18-41.jpg" alt="Packaging artisanal" class="portfolio-img">
-                <div class="portfolio-overlay">
-                    <h3>Packaging Artisanal</h3>
-                    <p>Pour marque locale</p>
+                <div class="portfolio-item">
+                    <img src="images/photo_22_2025-06-27_22-18-41.jpg" alt="Packaging artisanal" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3>Packaging Artisanal</h3>
+                        <p>Pour marque locale</p>
+                    </div>
                 </div>
-            </div>
-            <div class="portfolio-item">
-                <img src="images/photo_20_2025-06-27_22-18-41.jpg" alt="Packaging artisanal" class="portfolio-img">
-                <div class="portfolio-overlay">
-                    <h3>Packaging Artisanal</h3>
-                    <p>Pour marque locale</p>
+                <div class="portfolio-item">
+                    <img src="images/photo_23_2025-06-27_22-18-41.jpg" alt="Packaging artisanal" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3>Packaging Artisanal</h3>
+                        <p>Pour marque locale</p>
+                    </div>
                 </div>
-            </div>
-            <div class="portfolio-item">
-                <img src="images/photo_21_2025-06-27_22-18-41.jpg" alt="Packaging artisanal" class="portfolio-img">
-                <div class="portfolio-overlay">
-                    <h3>Packaging Artisanal</h3>
-                    <p>Pour marque locale</p>
+                <div class="portfolio-item">
+                    <img src="images/photo_24_2025-06-27_22-18-41.jpg" alt="Packaging artisanal" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3>Packaging Artisanal</h3>
+                        <p>Pour marque locale</p>
+                    </div>
                 </div>
-            </div>
-            <div class="portfolio-item">
-                <img src="images/photo_22_2025-06-27_22-18-41.jpg" alt="Packaging artisanal" class="portfolio-img">
-                <div class="portfolio-overlay">
-                    <h3>Packaging Artisanal</h3>
-                    <p>Pour marque locale</p>
+                <div class="portfolio-item">
+                    <img src="images/photo_25_2025-06-27_22-18-41.jpg" alt="Packaging artisanal" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3>Packaging Artisanal</h3>
+                        <p>Pour marque locale</p>
+                    </div>
                 </div>
-            </div>
-            <div class="portfolio-item">
-                <img src="images/photo_23_2025-06-27_22-18-41.jpg" alt="Packaging artisanal" class="portfolio-img">
-                <div class="portfolio-overlay">
-                    <h3>Packaging Artisanal</h3>
-                    <p>Pour marque locale</p>
+                <div class="portfolio-item">
+                    <img src="images/photo_26_2025-06-27_22-18-41.jpg" alt="Packaging artisanal" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3>Packaging Artisanal</h3>
+                        <p>Pour marque locale</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="images/photo_27_2025-06-27_22-18-41.jpg" alt="Packaging artisanal" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3>Packaging Artisanal</h3>
+                        <p>Pour marque locale</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="images/photo_28_2025-06-27_22-18-41.jpg" alt="Packaging artisanal" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3>Packaging Artisanal</h3>
+                        <p>Pour marque locale</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="images/photo_2_2025-06-27_22-18-41.jpg" alt="Packaging artisanal" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3>Packaging Artisanal</h3>
+                        <p>Pour marque locale</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="images/photo_3_2025-06-27_22-18-41.jpg" alt="Packaging artisanal" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3>Packaging Artisanal</h3>
+                        <p>Pour marque locale</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="images/photo_4_2025-06-27_22-18-41.jpg" alt="Packaging artisanal" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3>Packaging Artisanal</h3>
+                        <p>Pour marque locale</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="images/photo_5_2025-06-27_22-18-41.jpg" alt="Packaging artisanal" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3>Packaging Artisanal</h3>
+                        <p>Pour marque locale</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="images/photo_6_2025-06-27_22-18-41.jpg" alt="Packaging artisanal" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3>Packaging Artisanal</h3>
+                        <p>Pour marque locale</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="images/photo_7_2025-06-27_22-18-41.jpg" alt="Packaging artisanal" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3>Packaging Artisanal</h3>
+                        <p>Pour marque locale</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="images/photo_8_2025-06-27_22-18-41.jpg" alt="Packaging artisanal" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3>Packaging Artisanal</h3>
+                        <p>Pour marque locale</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="images/photo_9_2025-06-27_22-18-41.jpg" alt="Packaging artisanal" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3>Packaging Artisanal</h3>
+                        <p>Pour marque locale</p>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="portfolio-item">
-                <img src="images/photo_24_2025-06-27_22-18-41.jpg" alt="Packaging artisanal" class="portfolio-img">
-                <div class="portfolio-overlay">
-                    <h3>Packaging Artisanal</h3>
-                    <p>Pour marque locale</p>
-                </div>
-            </div>
-            <div class="portfolio-item">
-                <img src="images/photo_25_2025-06-27_22-18-41.jpg" alt="Packaging artisanal" class="portfolio-img">
-                <div class="portfolio-overlay">
-                    <h3>Packaging Artisanal</h3>
-                    <p>Pour marque locale</p>
-                </div>
-            </div>
-            <div class="portfolio-item">
-                <img src="images/photo_26_2025-06-27_22-18-41.jpg" alt="Packaging artisanal" class="portfolio-img">
-                <div class="portfolio-overlay">
-                    <h3>Packaging Artisanal</h3>
-                    <p>Pour marque locale</p>
-                </div>
-            </div>
-            <div class="portfolio-item">
-                <img src="images/photo_27_2025-06-27_22-18-41.jpg" alt="Packaging artisanal" class="portfolio-img">
-                <div class="portfolio-overlay">
-                    <h3>Packaging Artisanal</h3>
-                    <p>Pour marque locale</p>
-                </div>
-            </div>
-            <div class="portfolio-item">
-                <img src="images/photo_28_2025-06-27_22-18-41.jpg" alt="Packaging artisanal" class="portfolio-img">
-                <div class="portfolio-overlay">
-                    <h3>Packaging Artisanal</h3>
-                    <p>Pour marque locale</p>
-                </div>
-            </div>
-            <div class="portfolio-item">
-                <img src="images/photo_2_2025-06-27_22-18-41.jpg" alt="Packaging artisanal" class="portfolio-img">
-                <div class="portfolio-overlay">
-                    <h3>Packaging Artisanal</h3>
-                    <p>Pour marque locale</p>
-                </div>
-            </div>
-            <div class="portfolio-item">
-                <img src="images/photo_3_2025-06-27_22-18-41.jpg" alt="Packaging artisanal" class="portfolio-img">
-                <div class="portfolio-overlay">
-                    <h3>Packaging Artisanal</h3>
-                    <p>Pour marque locale</p>
-                </div>
-            </div>
-            <div class="portfolio-item">
-                <img src="images/photo_4_2025-06-27_22-18-41.jpg" alt="Packaging artisanal" class="portfolio-img">
-                <div class="portfolio-overlay">
-                    <h3>Packaging Artisanal</h3>
-                    <p>Pour marque locale</p>
-                </div>
-            </div>
-            <div class="portfolio-item">
-                <img src="images/photo_5_2025-06-27_22-18-41.jpg" alt="Packaging artisanal" class="portfolio-img">
-                <div class="portfolio-overlay">
-                    <h3>Packaging Artisanal</h3>
-                    <p>Pour marque locale</p>
-                </div>
-            </div>
-            <div class="portfolio-item">
-                <img src="images/photo_6_2025-06-27_22-18-41.jpg" alt="Packaging artisanal" class="portfolio-img">
-                <div class="portfolio-overlay">
-                    <h3>Packaging Artisanal</h3>
-                    <p>Pour marque locale</p>
-                </div>
-            </div>
-            <div class="portfolio-item">
-                <img src="images/photo_7_2025-06-27_22-18-41.jpg" alt="Packaging artisanal" class="portfolio-img">
-                <div class="portfolio-overlay">
-                    <h3>Packaging Artisanal</h3>
-                    <p>Pour marque locale</p>
-                </div>
-            </div>
-            <div class="portfolio-item">
-                <img src="images/photo_8_2025-06-27_22-18-41.jpg" alt="Packaging artisanal" class="portfolio-img">
-                <div class="portfolio-overlay">
-                    <h3>Packaging Artisanal</h3>
-                    <p>Pour marque locale</p>
-                </div>
-            </div>
-            <div class="portfolio-item">
-                <img src="images/photo_9_2025-06-27_22-18-41.jpg" alt="Packaging artisanal" class="portfolio-img">
-                <div class="portfolio-overlay">
-                    <h3>Packaging Artisanal</h3>
-                    <p>Pour marque locale</p>
-                </div>
-            </div>
     </section>
 
     <!-- Services Section -->
@@ -1020,7 +1094,7 @@ textarea.form-control {
 
     <!-- Contact Section -->
     <section class="contact" id="contact">
-        <h2 class="section-title">Contactez TOTO Arts</h2>
+        <h2 class="section-title">Contactez Screen LE SERIGRAPHE</h2>
         <p>Disponible pour des collaborations et projets au Bénin</p>
         <div class="contact-container">
             <div class="contact-info">
@@ -1088,13 +1162,13 @@ textarea.form-control {
 
     <!-- Footer -->
     <footer>
-        <div class="footer-logo">EGRES <span>WORK</span></div>
+        <div class="footer-logo">Screen <span>LE SERIGRAPHE</span></div>
         <p>Artisanat d'impression et design créatif au Bénin</p>
         <div class="social-links">
             <a href="https://wa.me/22954171292"><i class="fab fa-whatsapp"></i></a>
             <a href="https://www.facebook.com/ser.ge.3154?mibextid=wwXIfr&mibextid=wwXIfr"><i class="fab fa-facebook-f"></i></a>
         </div>
-        <p class="copyright">© 2025 TOTO arts par Serge.</p>
+        <p class="copyright">© 2025 Screen LE SERIGRAPHE par Serge.</p>
         <p class="copyright">Développé par Espoir (+229 01 58 44 37 83)</p>
     </footer>
 
@@ -1157,17 +1231,35 @@ textarea.form-control {
           }, 400);
         }
 
-const btn = const btn = document.getElementById('switchModeBtn');
-btn.addEventListener('click', function() {
-  const html = document.documentElement;
-  if (html.getAttribute('data-theme') === 'dark') {
-    html.removeAttribute('data-theme');
-    btn.textContent = '🌙';
-  } else {
-    html.setAttribute('data-theme', 'dark');
-    btn.textContent = '☀️';
-  }
-});
+        // Dark/Light mode toggle
+        const btn = document.getElementById('switchModeBtn');
+        btn.addEventListener('click', function() {
+          const html = document.documentElement;
+          if (html.getAttribute('data-theme') === 'dark') {
+            html.removeAttribute('data-theme');
+            btn.textContent = '🌙';
+          } else {
+            html.setAttribute('data-theme', 'dark');
+            btn.textContent = '☀️';
+          }
+        });
+
+        // Show more gallery items
+        const showMoreBtn = document.getElementById('showMoreBtn');
+        const hiddenGallery = document.getElementById('hiddenGallery');
+        
+        showMoreBtn.addEventListener('click', function() {
+            if (hiddenGallery.style.display === 'grid') {
+                hiddenGallery.style.display = 'none';
+                showMoreBtn.textContent = 'Voir plus de réalisations';
+            } else {
+                hiddenGallery.style.display = 'grid';
+                showMoreBtn.textContent = 'Voir moins';
+            }
+            
+            // Scroll to the gallery section
+            document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' });
+        });
     </script>
 </body>
 </html>
